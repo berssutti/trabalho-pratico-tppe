@@ -290,9 +290,31 @@ public class IRPF {
 		return soma;
 	}
 	
-	
+	// incompleto, ainda é necessário escrever os testes e o código para calcular de fato o imposto que vai incidir sobre a base de calculo.
+	// Para isso é necessário que a base de calculo esteja pronta.
 	public float calcularImposto() {
-		return 0.0f;
+		float baseDeCalculo = 4000.0f; //pegar da base de calculo
+		float imposto = 0.0f;
+		
+		if (baseDeCalculo <= 2259.20f) {
+			imposto = 0.0f;
+		}
+		else if (baseDeCalculo > 2259.21f && baseDeCalculo <= 2826.65f) {
+			imposto = 7.5f;
+		}
+		else if (baseDeCalculo >= 2826.66f && baseDeCalculo <= 3751.05f) {
+			imposto = 15.0f;
+		}
+		else if (baseDeCalculo >= 3751.06 && baseDeCalculo <= 4664.68f) {
+			imposto = 22.5f;
+		}
+		if (baseDeCalculo > 4664.68f) {
+			imposto = 27.5f;
+		}
+		
+		return imposto;
+
+		
 	}
 	
 	

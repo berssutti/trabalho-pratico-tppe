@@ -21,7 +21,7 @@ public class TesteCalcularImposto {
 		this.rendimento = rendimento;
 		this.impostoEsperado = impostoEsperado;
 	}
-	
+
 	@Parameterized.Parameters
 	public static Collection<Object[]> getParameters() {
 		return Arrays.asList(new Object[][] {
