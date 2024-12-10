@@ -26,7 +26,13 @@ public class TesteCalcularImposto {
 	public static Collection<Object[]> getParameters() {
 		return Arrays.asList(new Object[][] {
 			{2259.19f, 0.0f},
-			{2259.21f, 7.5f}
+			{2259.21f, 7.5f},
+			{2826.65f, 7.5f},
+			{2826.66f, 15.0f},
+			{3751.05f, 15.0f},
+			{3751.06f, 22.5f},
+			{4664.68f, 22.5f},
+			{4664.69f, 27.5f}
 		});
 	}
 	
