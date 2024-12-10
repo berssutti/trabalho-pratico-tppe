@@ -291,4 +291,9 @@ public class IRPF {
 	}
 	
 	
+	public float calcularImposto() {
+		return 0.0f;
+	}
+	
+	
 }
