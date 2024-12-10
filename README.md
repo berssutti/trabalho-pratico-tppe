@@ -10,7 +10,7 @@
 
 | Nome                          | Matrícula  |
 |-------------------------------|------------|
-| Paulo Henrique Almeida da Silva | 17/0020291 |
+| Paulo Henrique Almeida da Silva | 170020291 |
 | Jefferson França Santos       | 180102761  |
 | Abraão Alves Ribeiro          | 190023376  |
 | Bernardo Chaves Pissutti      | 190103302  |
