@@ -11,7 +11,7 @@ import org.junit.runners.Suite.SuiteClasses;
 				TesteCadastroContribuicaoPrevidenciaria.class, 
 				TesteCadastroPensaoAlimenticia.class, 
 				TesteCadastroOutrasDeducoes.class,
-				TesteBaseCalculoImposto})
+				TesteBaseCalculoImposto.class})
 public class AllTests {
 
 }
