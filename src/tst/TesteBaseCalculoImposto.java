@@ -1,30 +1,54 @@
 package tst;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
+import static org.junit.Assert.assertEquals;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
+import java.util.Arrays;
+import java.util.Collection;
+
 import app.IRPF;
 
+@RunWith(Parameterized.class)
 public class TesteBaseCalculoImposto {
+    
+    private IRPF irpf;
+    private float rendimento;
+    private float contribuicao;
+    private float pensao;
+    private int numDependentes;
+    private float totalRendimentosEsperados;
+    private float baseCalculoEsperada;
 
-    IRPF irpf;
+    public TesteBaseCalculoImposto(float rendimento, float contribuicao, float pensao, 
+            int numDependentes, float totalRendimentosEsperados, float baseCalculoEsperada) {
+        this.rendimento = rendimento;
+        this.contribuicao = contribuicao;
+        this.pensao = pensao;
+        this.numDependentes = numDependentes;
+        this.totalRendimentosEsperados = totalRendimentosEsperados;
+        this.baseCalculoEsperada = baseCalculoEsperada;
+    }
 
-    @BeforeEach
+    @Parameters
+    public static Collection<Object[]> data() {
+        return Arrays.asList(new Object[][] {
+            {1000f, 500f, 200f, 1, 1000f, 1000f},
+            {1000f, 1000f, 500f, 2, 2000f, 1000f},
+            {2000f, 1000f, 800f, 1, 3000f, 1800f},
+            {3000f, 0f, 0f, 3, 3000f, 0f}
+        });
+    }
+
+    @Before
     public void setup() {
         irpf = new IRPF();
     }
 
-    // Teste de Base de Cálculo de Imposto com diferentes valores de rendimentos, contribuições e deduções
-    @ParameterizedTest
-    @CsvSource({
-        "1000, 500, 200, 1, 1000, 1000",
-        "1000, 1000, 500, 2, 2000, 1000",
-        "2000, 1000, 800, 1, 3000, 1800",
-        "3000, 0, 0, 3, 3000, 0"
-    })
-    public void testarBaseCalculoImposto(float rendimento, float contribuicao, float pensao, int numDependentes, float totalRendimentosEsperados, float baseCalculoEsperada) {
+    @Test
+    public void testarBaseCalculoImposto() {
         // Cadastro de rendimento
         irpf.criarRendimento("Salário", true, rendimento);
 
