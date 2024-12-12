@@ -212,7 +212,8 @@ public class IRPF {
 	 * @param valor valor da pensao alimenticia
 	 */
 	public void cadastrarPensaoAlimenticia(String dependente, float valor) {
-		String parentesco = getParentesco(dependente); 
+		String parentesco = getParentesco(dependente);
+		
 		if (parentesco.toLowerCase().contains("filh") || 
 			parentesco.toLowerCase().contains("alimentand")) {
 			totalPensaoAlimenticia += valor;
@@ -290,6 +291,13 @@ public class IRPF {
 		return soma;
 	}
 	
+	public float baseDeCalculoImposto() {
+        float totalRendimentos = getTotalRendimentos();
+        float deducoes = getTotalOutrasDeducoes();
+
+        return Math.max(0, totalRendimentos - deducoes);
+	}
+	
 	// incompleto, ainda é necessário escrever os testes e o código para calcular de fato o imposto que vai incidir sobre a base de calculo.
 	// Para isso é necessário que a base de calculo esteja pronta.
 	public float calcularImposto() {
@@ -311,7 +319,7 @@ public class IRPF {
 		if (baseDeCalculo > 4664.68f) {
 			imposto = 27.5f;
 		}
-		
+
 		return imposto;
 
 		
