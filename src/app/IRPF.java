@@ -298,32 +298,39 @@ public class IRPF {
         return Math.max(0, totalRendimentos - deducoes);
 	}
 	
-	// incompleto, ainda é necessário escrever os testes e o código para calcular de fato o imposto que vai incidir sobre a base de calculo.
-	// Para isso é necessário que a base de calculo esteja pronta.
 	public float calcularImposto() {
-		float baseDeCalculo = 4000.0f; //pegar da base de calculo
+		float baseDeCalculo = baseDeCalculoImposto();
 		float imposto = 0.0f;
-		
+	
+		// Faixa 1: até 2259.20 - isento
 		if (baseDeCalculo <= 2259.20f) {
 			imposto = 0.0f;
 		}
-		else if (baseDeCalculo > 2259.21f && baseDeCalculo <= 2826.65f) {
-			imposto = 7.5f;
+		// Faixa 2: de 2259.21 até 2826.65
+		else if (baseDeCalculo <= 2826.65f) {
+			imposto = (baseDeCalculo - 2259.20f) * 0.075f;
 		}
-		else if (baseDeCalculo >= 2826.66f && baseDeCalculo <= 3751.05f) {
-			imposto = 15.0f;
+		// Faixa 3: de 2826.66 até 3751.05
+		else if (baseDeCalculo <= 3751.05f) {
+			imposto = (baseDeCalculo - 2826.65f) * 0.15f 
+					+ (2826.65f - 2259.20f) * 0.075f;
 		}
-		else if (baseDeCalculo >= 3751.06 && baseDeCalculo <= 4664.68f) {
-			imposto = 22.5f;
+		// Faixa 4: de 3751.06 até 4664.68
+		else if (baseDeCalculo <= 4664.68f) {
+			imposto = (baseDeCalculo - 3751.05f) * 0.225f 
+					+ (3751.05f - 2826.65f) * 0.15f 
+					+ (2826.65f - 2259.20f) * 0.075f;
 		}
-		if (baseDeCalculo > 4664.68f) {
-			imposto = 27.5f;
+		// Faixa 5: acima de 4664.68
+		else {
+			imposto = (baseDeCalculo - 4664.68f) * 0.275f 
+					+ (4664.68f - 3751.05f) * 0.225f 
+					+ (3751.05f - 2826.65f) * 0.15f 
+					+ (2826.65f - 2259.20f) * 0.075f;
 		}
-
+	
 		return imposto;
-
-		
 	}
-	
-	
+		
+
 }
