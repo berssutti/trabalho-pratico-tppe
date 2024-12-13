@@ -292,10 +292,9 @@ public class IRPF {
 	}
 	
 	public float baseDeCalculoImposto() {
-        float totalRendimentos = getTotalRendimentos();
-        float deducoes = getTotalOutrasDeducoes();
-
-        return Math.max(0, totalRendimentos - deducoes);
+	    float totalRendimentos = getTotalRendimentosTributaveis();
+	    float deducoes = getDeducao() + getTotalOutrasDeducoes() + getTotalPensaoAlimenticia();
+	    return Math.max(0, totalRendimentos - deducoes);
 	}
 	
 	public float calcularImposto() {
@@ -332,7 +331,7 @@ public class IRPF {
 	@return alíquota efetiva do imposto de renda*/
 	public float calcularAliquotaEfetiva(float rendimentosTributaveis, float impostoDevido) {
 		if (rendimentosTributaveis == 0) {
-			return 0; // Evitar divisão por zero
+			return 0;
 		}
 		return (impostoDevido / rendimentosTributaveis) * 100;
 	}

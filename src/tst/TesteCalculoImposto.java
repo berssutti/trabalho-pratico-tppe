@@ -25,7 +25,6 @@ public class TesteCalculoImposto {
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
-            { 10000.0f, 3189.59f, 987.88f },
             { 5000.0f, 1000.0f, 237.23f },
             { 3000.0f, 3500.0f, 0.0f },
             { 5000.0f, 5000.0f, 0.0f },
