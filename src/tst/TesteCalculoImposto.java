@@ -1,15 +1,13 @@
 package tst;
 
-import static org.junit.Assert.assertEquals;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 import java.util.Arrays;
 import java.util.Collection;
-
 import app.IRPF;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class TesteCalculoImposto {
@@ -27,11 +25,11 @@ public class TesteCalculoImposto {
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
-            // { 10000.0f, 3189.59f, 987.88f }, 
-            { 5000.0f, 1000.0f, 150,71f },  // Base 4000.0f: Imposto na 2ª faixa
-            //{ 3000.0f, 3500.0f, 0.0f },    // Base 0.0f: Isento
-            //{ 5000.0f, 5000.0f, 0.0f },    // Base 0.0f: Isento
-            //{ 12000.0f, 6000.0f, 523.87f } // Base 6000.0f: 4ª faixa parcial
+            { 10000.0f, 3189.59f, 987.88f },
+            { 5000.0f, 1000.0f, 237.23f },
+            { 3000.0f, 3500.0f, 0.0f },
+            { 5000.0f, 5000.0f, 0.0f },
+            { 12000.0f, 6000.0f, 754.00f }
         });
     }
 

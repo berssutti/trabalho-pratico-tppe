@@ -301,36 +301,39 @@ public class IRPF {
 	public float calcularImposto() {
 		float baseDeCalculo = baseDeCalculoImposto();
 		float imposto = 0.0f;
-	
-		// Faixa 1: até 2259.20 - isento
+	  
 		if (baseDeCalculo <= 2259.20f) {
-			imposto = 0.0f;
+		  imposto = 0.0f;
+		} else if (baseDeCalculo <= 2826.65f) {
+		  imposto = (baseDeCalculo - 2259.20f) * 0.075f;
+		} else if (baseDeCalculo <= 3751.05f) {
+		  imposto = (2826.65f - 2259.20f) * 0.075f + (baseDeCalculo - 2826.65f) * 0.15f;
+		} else if (baseDeCalculo <= 4664.68f) {
+		  imposto = (2826.65f - 2259.20f) * 0.075f + (3751.05f - 2826.65f) * 0.15f + (baseDeCalculo - 3751.05f) * 0.225f;
+		} else {
+		  imposto = (2826.65f - 2259.20f) * 0.075f + (3751.05f - 2826.65f) * 0.15f + (4664.68f - 3751.05f) * 0.225f + (baseDeCalculo - 4664.68f) * 0.275f;
 		}
-		// Faixa 2: de 2259.21 até 2826.65
-		else if (baseDeCalculo <= 2826.65f) {
-			imposto = (baseDeCalculo - 2259.20f) * 0.075f;
-		}
-		// Faixa 3: de 2826.66 até 3751.05
-		else if (baseDeCalculo <= 3751.05f) {
-			imposto = (baseDeCalculo - 2826.65f) * 0.15f 
-					+ (2826.65f - 2259.20f) * 0.075f;
-		}
-		// Faixa 4: de 3751.06 até 4664.68
-		else if (baseDeCalculo <= 4664.68f) {
-			imposto = (baseDeCalculo - 3751.05f) * 0.225f 
-					+ (3751.05f - 2826.65f) * 0.15f 
-					+ (2826.65f - 2259.20f) * 0.075f;
-		}
-		// Faixa 5: acima de 4664.68
-		else {
-			imposto = (baseDeCalculo - 4664.68f) * 0.275f 
-					+ (4664.68f - 3751.05f) * 0.225f 
-					+ (3751.05f - 2826.65f) * 0.15f 
-					+ (2826.65f - 2259.20f) * 0.075f;
-		}
-	
 		return imposto;
 	}
-		
 
+	public float calcularBaseCalculo() {
+        float rendimentosTributaveis = getTotalRendimentosTributaveis();
+        float totalDeducoes = getDeducao();
+
+        return rendimentosTributaveis - totalDeducoes;
+    }
+	
+	/**
+	 
+	Calcula a alíquota efetiva do imposto de renda com base nos rendimentos
+	tributáveis e no imposto devido.
+	@param rendimentosTributaveis valor total dos rendimentos tributáveis
+	@param impostoDevido valor do imposto devido
+	@return alíquota efetiva do imposto de renda*/
+	public float calcularAliquotaEfetiva(float rendimentosTributaveis, float impostoDevido) {
+		if (rendimentosTributaveis == 0) {
+			return 0; // Evitar divisão por zero
+		}
+		return (impostoDevido / rendimentosTributaveis) * 100;
+	}
 }
