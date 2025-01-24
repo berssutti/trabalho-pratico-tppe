@@ -238,15 +238,16 @@ public class IRPF {
         }
         return total;
     }
-    
+
     public float baseDeCalculoImposto() {
         float totalRendimentos = getTotalRendimentosTributaveis();
         float deducoes = getDeducao() + getTotalOutrasDeducoes() + getTotalPensaoAlimenticia();
         return Math.max(0, totalRendimentos - deducoes);
     }
-    
+
     public float calcularImposto() {
         float baseDeCalculo = baseDeCalculoImposto();
+        // Aqui a gente substituiu pelo objeto metodo depois de ter extraido para uma classe
         CalcularImposto calculadora = new CalcularImposto(baseDeCalculo);
         return calculadora.calcular();
     }

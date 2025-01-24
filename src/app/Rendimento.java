@@ -1,3 +1,4 @@
+// Parte da operação de extração de classe
 package app;
 
 public class Rendimento {

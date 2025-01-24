@@ -1,3 +1,5 @@
+// Classe objeto-metodo extraido do método calcularImposto
+
 package app;
 
 public class CalcularImposto {
