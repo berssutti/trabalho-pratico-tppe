@@ -111,3 +111,18 @@ Os testes já implementados cobrem as seguintes funcionalidades:
 | TesteCadastroOutrasDeducoes             | Calcular outros tipos de deduções  |
 
 ---
+## 📅 Entrega 2 - Refatoração - Grupo 12
+
+**Valor:** 20 pontos  
+**Data de entrega:** 24/01/2025, 23:59hs. Entrega: através de push para os repositórios dos grupos.  
+
+### 📋 Requisitos
+
+Com base nos artefatos entregues pelo grupo na primeira parte do trabalho, os componentes deverão refatorá-los nessa segunda etapa. Todos os grupos realizarão as mesmas operações de refatoração, variando apenas os locais onde elas serão aplicadas. As operações de refatoração a serem aplicadas são Extrair método, Extrair classe e Substituir método por objeto-método. As classes / métodos sujeitos às refatorações para cada grupo estão listados a seguir.
+
+1. Extrair Método - IRPF.calcularImposto()
+2. Extrair Classe - IRPF
+3. Substituir método por objeto-método	Metodo - calcularImposto(resultante da refatoracao Extrair Método).
+
+---
+
