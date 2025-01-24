@@ -297,10 +297,15 @@ public class IRPF {
 	    return Math.max(0, totalRendimentos - deducoes);
 	}
 	
+	// Extração do método calcular imposto
 	public float calcularImposto() {
 		float baseDeCalculo = baseDeCalculoImposto();
+		return calcularImpostoPorFaixa(baseDeCalculo);
+	}
+	
+	private float calcularImpostoPorFaixa(float baseDeCalculo) {
 		float imposto = 0.0f;
-	  
+		  
 		if (baseDeCalculo <= 2259.20f) {
 		  imposto = 0.0f;
 		} else if (baseDeCalculo <= 2826.65f) {
